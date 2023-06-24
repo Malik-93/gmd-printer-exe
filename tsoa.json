@@ -1,0 +1,16 @@
+{
+    "entryFile": "index.ts",
+    "noImplicitAdditionalProperties": "throw-on-extras",
+    "spec": {
+        "name": "GMD-Printer-App",
+        "description": "An application to print rollo reciepts.",
+        "outputDirectory": "public",
+        "specVersion": 3
+    },
+    "routes": {
+        "routesDir": "public"
+    },
+    "ignore": [
+        "**/node_modules/**"
+    ]
+}

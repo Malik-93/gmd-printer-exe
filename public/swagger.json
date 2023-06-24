@@ -1,0 +1,140 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"IPrinterStatusResponse": {
+				"properties": {
+					"online": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"online"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IPrinterStatusRequest": {
+				"properties": {
+					"printer_mac": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"printer_mac"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "GMD-Printer-App",
+		"version": "1.0.0",
+		"description": "An application to print rollo reciepts.",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "Mudassir and Guilherme"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/api/printer/print": {
+			"post": {
+				"operationId": "Print",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Printer"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"_printer": {
+										"type": "string"
+									},
+									"copies": {
+										"type": "string"
+									},
+									"file": {
+										"type": "string",
+										"format": "binary"
+									}
+								},
+								"required": [
+									"_printer",
+									"copies",
+									"file"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/printer/status": {
+			"post": {
+				"operationId": "Printer_status",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IPrinterStatusResponse"
+								},
+								"examples": {
+									"Example 1": {}
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Printer"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IPrinterStatusRequest"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
