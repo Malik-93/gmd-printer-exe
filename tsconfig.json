@@ -9,6 +9,7 @@
         "emitDecoratorMetadata": true,
         "baseUrl": "./",
         "resolveJsonModule": true,
+        "skipLibCheck": true
     },
     "sourceMap": true,
     "include": [

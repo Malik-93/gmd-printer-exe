@@ -107,3 +107,4 @@ exe/
 logs/
 ssl-certs/
 out/
+/uploads

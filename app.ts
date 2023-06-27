@@ -1,17 +1,9 @@
 import express, {Application, Request, Response} from 'express'
 import path from 'path'
-import cors from 'cors'
 import dotenv from 'dotenv'
-import router from './router'
-import errorHandler from './middlewares/error.handler'
-
 dotenv.config()
 const app: Application = express()
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
-app.use(express.static('public'))
-app.use(cors())
-app.use(express.urlencoded({extended: false}))
-app.use(express.json())
-app.use(errorHandler)
-app.use(router)
-export default app
+app.use('/', (req: Request, res: Response) => res.send('Printer exe app is up and running...'));
+app.use('/update', (req: Request, res: Response) => res.status(200).json({available: true, message:'A new update is available'}));
+export default app;
