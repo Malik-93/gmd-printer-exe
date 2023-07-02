@@ -48,7 +48,7 @@ router.get('/list', (_req: Request, _res: Response) => {
     try {
         const builds = readFile();
         if (!builds.length) return _res.status(404).json({ statusCode: 404, message: `There is no build is exist in the database.` });
-        else return _res.status(200).json({ count: builds.length, message: 'Builds list', builds });
+        else return _res.status(200).json({ count: builds.length, message: 'Builds list', builds: builds.reverse() });
     } catch (error) {
         console.log('[list].error', error);
         return _res.status(500).json({ statusCode: 500, file: null, message: 'An error accured during file list.', error })
